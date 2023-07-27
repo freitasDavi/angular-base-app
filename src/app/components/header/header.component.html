@@ -1,0 +1,8 @@
+<header class="w-full bg-[#EB1F0D] min-h-[60px] flex justify-between items-center p-6">
+    <img src="/assets/logo.png" alt="Logo" class="w-16">
+    <nav class="flex gap-10 font-quick-sand font-semibold text-xl">
+        <a routerLink="" [ngClass]="{'text-yellow-100': currentRoute == '/'}">Home</a>
+        <a routerLink="/cadastro" [ngClass]="{'text-yellow-100': currentRoute == '/cadastro'}">Cadastro</a>
+        <a routerLink="/login" [ngClass]="{'text-yellow-100': currentRoute == '/login'}" >Login</a>
+    </nav>
+</header>
