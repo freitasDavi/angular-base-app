@@ -8,6 +8,9 @@ module.exports = {
       fontFamily: {
         'open-sans': ['Open Sans', 'sans-serif'], 
         'quick-sand': ['Quicksand', 'sans-serif']
+      },
+      colors: {
+        'main-red': '#EB1F0D'
       }
     },
   },

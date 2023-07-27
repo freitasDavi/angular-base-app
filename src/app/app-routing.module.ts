@@ -6,6 +6,9 @@ const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "login", component: HomeComponent },
   { path: "cadastro", component: HomeComponent },
+  { path: "orcamento", component: HomeComponent },
+  { path: "clientes", component: HomeComponent },
+  { path: "fornecedores", component: HomeComponent },
 
 ];
 
