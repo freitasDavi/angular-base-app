@@ -1,0 +1,31 @@
+<main class="min-h-[75vh] flex justify-center items-center">
+    <section class="bg-slate-200 p-10 min-w-[500px] rounded-lg shadow">
+        <h1 class="text-3xl text-slate-800 font-bold font-quick-sand mb-4">Olá denovo</h1>
+        <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" #formDir="ngForm" class="flex flex-col gap-8 font-open-sans font">
+            <label class="flex flex-col gap-2 text-xl">
+                Login
+                <input type="text" placeholder="hello@gmail.com" formControlName="login" id="login" name="login" required class="rounded-md p-2 text-slate-600 text-base" />
+                <p *ngIf="login.invalid && formDir.submitted"  class="text-[#DC3545] border-l-2 border-solid border-[#DC3545] text-sm pl-1">
+                    É necessário informar o login
+                </p>
+            </label>
+            
+            <label class="flex flex-col gap-2 text-xl">
+                Senha
+                <input type="password" placeholder="********" formControlName="password" id="password" name="password" required class="rounded-md p-2 text-base text-slate-600" />
+                <p *ngIf="password.invalid && formDir.submitted"  class="text-[#DC3545] border-l-2 border-solid border-[#DC3545] text-sm pl-1">
+                    É necessário informar a senha
+                </p>
+            </label>
+            <div class="flex justify-between items-baseline">
+                <a routerLink="/" class="text-main-red text-sm font-open-sans underline transition hover:text-red-700">
+                    Não tem uma conta? Cadastre-se
+                </a>
+                <button type="submit" class="bg-main-red py-2 px-4 rounded-lg text-white
+                    transition hover:bg-red-700">
+                    Login
+                </button>
+            </div>
+        </form>
+    </section>
+</main>
