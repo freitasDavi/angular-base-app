@@ -1,0 +1,14 @@
+<div *ngIf="notificationService.title.length > 0 && notificationService.message.length > 0" @fadeIn @fadeOut
+    class="flex w-96 py-4 px-3 gap-4 rounded-xl fixed top-20 z-10 ml-[40%]"
+        [ngClass]="notificationService.color.bg"
+    >
+    <div class="flex justify-center items-center w-16 h-12 text-4xl bg-white rounded-full"
+        [ngClass]="notificationService.color.text"
+    >
+        <fa-icon [icon]="notificationService.faIcon"></fa-icon>
+    </div>
+    <div class="text-white">
+        <h3 class="text-2xl font-quick-sand">{{ notificationService.title }}</h3>
+        <p class="text-base font-open-sans">{{ notificationService.message }}</p>
+    </div>
+</div>
