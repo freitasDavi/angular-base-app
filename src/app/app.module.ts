@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from "@angular/common/http"
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http"
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations"
 
 import { AppComponent } from './app.component';
@@ -14,6 +14,7 @@ import { ClientesComponent } from './pages/clientes/clientes.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TokenInterceptor } from './interceptors/token.interceptor';
 
 
 @NgModule({
@@ -36,7 +37,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FontAwesomeModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

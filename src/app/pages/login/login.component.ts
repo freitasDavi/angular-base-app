@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { NotificationsService } from 'src/app/services/notifications.service';
 
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
 
   constructor (
     private authService: AuthService,
-    private notificationService: NotificationsService) {}
+    private notificationService: NotificationsService,
+    private router: Router) {}
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -32,12 +34,10 @@ export class LoginComponent implements OnInit {
   }
 
   async onSubmit() {
-    if (this.loginForm.invalid) { 
-      this.notificationService.addWarningNotification({
-        title: "Ops!",
-        message: "Alguma informação não está correta"
-      })
+    var me = this;
 
+    if (this.loginForm.invalid) { 
+      this.notificateError("Alguma informação não está correta");
       return;
     }
 
@@ -47,8 +47,27 @@ export class LoginComponent implements OnInit {
       login: this.loginForm.get('login')!.value,
       password: this.loginForm.get('password')!.value, }
       )
-      .subscribe();
+      .subscribe({
+        next: (res) => {
+          me.authService.storeToken(res.token);
+          me.notificateSuccess();
+          me.router.navigateByUrl("/");
+        },
+        error(err) {
+          console.error(err);
+          me.notificateError('Oopa deu ruim');
+        },
+      });
+  }
 
+  notificateError (errorMessage: string): void {
+    this.notificationService.addWarningNotification({
+      title: "Ops!",
+      message: errorMessage
+    })
+  }
+
+  notificateSuccess (): void {
     this.notificationService.addSuccessNotification({
       title: "Login",
       message: "Login realizado com sucesso, redirecionando..."
