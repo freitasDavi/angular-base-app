@@ -15,6 +15,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { CadClientesComponent } from './pages/cad-clientes/cad-clientes.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     HomeCardComponent,
     ClientesComponent,
     LoginComponent,
-    SnackbarComponent
+    SnackbarComponent,
+    LoadingSpinnerComponent,
+    CadClientesComponent
   ],
   imports: [
     BrowserModule,

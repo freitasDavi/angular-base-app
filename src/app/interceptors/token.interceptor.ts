@@ -33,6 +33,7 @@ export class TokenInterceptor implements HttpInterceptor {
         if (error instanceof HttpErrorResponse) {
           if (error.status === 403 || error.status === 401) {
             // TODO: If i had refresh token, should be used right here
+            this.authService.clearToken();
             this.notificationService.addWarningNotification({ title: "Token Expirado", message: "Seu token expirou, realize o login novamente." });
             this.router.navigateByUrl("/login");
           }

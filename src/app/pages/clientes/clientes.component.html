@@ -1,10 +1,14 @@
-<div class="flex justify-center min-h-[60vh]">
-  <section class="flex flex-col p-10 gap-4">
+<div class="flex justify-center lg:min-h-[60vh] xl:min-h-[75vh]">
+  <section class="flex flex-col p-10 gap-4 min-w-[60%] ">
     <div class="flex justify-between items-baseline">
       <h3 class="text-3xl font-quick-sand font-black text-black w-full">Clientes</h3>
       <a routerLink="/clientes/novo"
         class="text-xl font-bold font-quick-sand bg-green-500 hover:bg-green-700 transition-all text-white px-4 py-2 rounded-lg">Novo</a>
     </div>
+    <div *ngIf="isLoading; else clients" class="flex items-center justify-center w-full">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+    <ng-template #clients>
     <table class="font-open-sans w-full">
       <thead class="text-sm text-left uppercase bg-red-200 text-red-800 rounded-tl-lg rounded-tr-lg">
         <th scope="col" class="px-2 py-1">ID</th>
@@ -27,7 +31,7 @@
           <td class="px-6 py-3">{{ client.inscricao }}</td>
           <td class="px-6 py-3">{{ client.telefone }}</td>
           <td class="px-6 py-3 flex items-baseline gap-4">
-            <fa-icon [icon]="faPen"></fa-icon>
+            <fa-icon [icon]="faPen" (click)="onClickEdit(client.id)"></fa-icon>
             <fa-icon [icon]="faTrash"></fa-icon>
           </td>
         </tr>
@@ -67,5 +71,6 @@
         </li>
       </ul>
     </nav>
+  </ng-template>
   </section>
 </div>
