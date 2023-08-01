@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ResponseContentDTO } from 'src/app/types/ResponseContentDTO';
 
 export type Clients = {
   id: number,
@@ -23,5 +24,9 @@ export class ClientsService {
 
   public getClients (): Observable<Clients[]> {
     return this.http.get<Clients[]>(this.urlApi);
+  }
+
+  public getClient (clientId: number): Observable<ResponseContentDTO<Clients>> {
+    return this.http.get<ResponseContentDTO<Clients>>(`${this.urlApi}/${clientId}`);
   }
 }
