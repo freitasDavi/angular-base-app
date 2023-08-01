@@ -1,6 +1,71 @@
-<div class="bg-green-300">
-    <h3 class="text-2xl font-quick-sand font-bold text-black">Clientes</h3>
-    <div *ngFor="let client of clientes">
-        <h1>{{ client.nome }}</h1>
+<div class="flex justify-center min-h-[60vh]">
+  <section class="flex flex-col p-10 gap-4">
+    <div class="flex justify-between items-baseline">
+      <h3 class="text-3xl font-quick-sand font-black text-black w-full">Clientes</h3>
+      <a routerLink="/clientes/novo"
+        class="text-xl font-bold font-quick-sand bg-green-500 hover:bg-green-700 transition-all text-white px-4 py-2 rounded-lg">Novo</a>
     </div>
+    <table class="font-open-sans w-full">
+      <thead class="text-sm text-left uppercase bg-red-200 text-red-800 rounded-tl-lg rounded-tr-lg">
+        <th scope="col" class="px-2 py-1">ID</th>
+        <th scope="col" class="px-6 py-3">Nome</th>
+        <th scope="col" class="px-6 py-3">Rua</th>
+        <th scope="col" class="px-6 py-3">Estado</th>
+        <th scope="col" class="px-6 py-3">Cidade</th>
+        <th scope="col" class="px-6 py-3">Inscrição</th>
+        <th scope="col" class="px-6 py-3">Telefone</th>
+        <th scope="col" class="px-6 py-3">Ações</th>
+
+      </thead>
+      <tbody>
+        <tr *ngFor="let client of clientes" class="bg-white border-b border-red-200 text-left">
+          <td scope="col" class="px-2 py-1 font-bold">{{ client.id }}</td>
+          <td class="px-6 py-3">{{ client.nome }}</td>
+          <td class="px-6 py-3">{{ client.rua }} - {{ client.numero }}</td>
+          <td class="px-6 py-3">{{ client.estado }}</td>
+          <td class="px-6 py-3">{{ client.cidade }}</td>
+          <td class="px-6 py-3">{{ client.inscricao }}</td>
+          <td class="px-6 py-3">{{ client.telefone }}</td>
+          <td class="px-6 py-3 flex items-baseline gap-4">
+            <fa-icon [icon]="faPen"></fa-icon>
+            <fa-icon [icon]="faTrash"></fa-icon>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <nav class="flex items-center justify-between pt-4" aria-label="Table navigation">
+      <span class="text-sm font-normal text-gray-500">Showing <span class="font-semibold text-gray-900">1-10</span> of
+        <span class="font-semibold text-gray-900">1000</span></span>
+      <ul class="inline-flex -space-x-px text-sm h-8">
+        <li>
+          <a href="#"
+            class="flex items-center justify-center px-3 h-8 ml-0 leading-tight  rounded-l-lg bg-red-800 border-gray-700 text-white hover:bg-red-700 hover:text-white">Previous</a>
+        </li>
+        <li>
+          <a href="#"
+            class="flex items-center justify-center px-3 h-8 leading-tight  bg-red-800 border-gray-700 text-white hover:bg-red-700 hover:text-white">1</a>
+        </li>
+        <li>
+          <a href="#"
+            class="flex items-center justify-center px-3 h-8 leading-tight  bg-red-800 border-gray-700 text-white hover:bg-red-700 hover:text-white">2</a>
+        </li>
+        <li>
+          <a href="#" aria-current="page"
+            class="flex items-center justify-center px-3 h-8 border  hover:bg-blue-100 hover:text-blue-700 border-red-700 bg-red-700 text-white">3</a>
+        </li>
+        <li>
+          <a href="#"
+            class="flex items-center justify-center px-3 h-8 leading-tight  bg-red-800 border-gray-700 text-white hover:bg-red-700 hover:text-white">4</a>
+        </li>
+        <li>
+          <a href="#"
+            class="flex items-center justify-center px-3 h-8 leading-tight  bg-red-800 border-gray-700 text-white hover:bg-red-700 hover:text-white">5</a>
+        </li>
+        <li>
+          <a href="#"
+            class="flex items-center justify-center px-3 h-8 leading-tight  rounded-r-lg bg-red-800 border-gray-700 text-white hover:bg-red-700 hover:text-white">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </section>
 </div>
